@@ -1,7 +1,6 @@
 package Threads.Deadlock;
 
 class Lock{
-
 }
 
 public class DeadlockExample {
@@ -14,7 +13,7 @@ public class DeadlockExample {
                 System.out.println("T1 is locked lock1.");
                 try {
                     Thread.sleep(1000);
-                } catch (Exception e) {
+                } catch (Exception ignored) {
                 }
 
                 synchronized (lock2) {
@@ -22,20 +21,18 @@ public class DeadlockExample {
                 }
             }
         });
-
         Thread thread2 = new Thread(() -> {
-        synchronized (lock2) {
+            synchronized (lock2) {
             System.out.println("T2 is locked lock2.");
             try {
                 Thread.sleep(1000);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
-
-            synchronized (lock1) {
-                System.out.println("T2 locked lock1");
+                synchronized (lock1) {
+                    System.out.println("T2 locked lock1");
+                }
             }
-        }
-    });
+        });
 
         thread1.start();
         thread2.start();
