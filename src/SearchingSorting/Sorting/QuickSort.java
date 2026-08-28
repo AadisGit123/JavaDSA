@@ -1,4 +1,4 @@
-package SearchingSorting;
+package SearchingSorting.Sorting;
 
 public class QuickSort {
     static void quickSort(int[] arr, int low, int high){

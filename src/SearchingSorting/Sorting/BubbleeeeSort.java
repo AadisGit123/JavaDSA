@@ -1,4 +1,4 @@
-package SearchingSorting;
+package SearchingSorting.Sorting;
 
 public class BubbleeeeSort {
     public static void bubbleSort(int[] arr){

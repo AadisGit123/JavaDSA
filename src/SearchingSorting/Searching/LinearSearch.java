@@ -1,4 +1,4 @@
-package SearchingSorting;
+package SearchingSorting.Searching;
 
 public class LinearSearch {
     public static int Linear(int[] arr, int target){

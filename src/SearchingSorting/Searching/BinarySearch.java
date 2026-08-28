@@ -1,4 +1,4 @@
-package SearchingSorting;
+package SearchingSorting.Searching;
 
 public class BinarySearch {
 
