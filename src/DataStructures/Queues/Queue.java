@@ -22,7 +22,7 @@ public class Queue { //FIFO or LILO
         back++;
         arr[back] = val;
         if(front == -1){
-            front--;
+            front++;
         }
     }
 
@@ -35,18 +35,41 @@ public class Queue { //FIFO or LILO
         front++;
     }
 
-    int peek(){
+    void peek(){
         if(front == -1 || front > back){
             System.out.println("UnderFlown!");
-            return -1;
+            return ;
         }
-        return arr[front];
+        System.out.println(arr[front]);
     }
 
-    boolean isEmpty(){
-        if(front == -1 ||front > back){
-            return false;
+     boolean isEmpty(){
+        return !(front == -1 ||front > back);
+    }
+
+    void display() {
+        if ((front == -1 ||front > back)) {
+            System.out.println("Stack UnderFlow");
+            return;
         }
-        else return true;
+
+        for (int i = front; i >= back; i--) {
+            System.out.println(arr[i]);
+        }
+    }
+}
+
+class DriverCode{
+    public static void main(String[] args) {
+
+        Queue q = new Queue(5);
+
+        q.push(10);
+        q.push(20);
+        q.push(30);
+        q.peek();
+        q.pop();
+        q.peek();
+        q.display();
     }
 }

@@ -87,7 +87,7 @@ public class DLL {
             return ;
         }
         Node toDelete = head;
-        System.out.println("Deleted Element: " +toDelete.data);
+        System.out.println("Deleted Element: " + toDelete.data);
         head = head.next;
         toDelete = null; // call Garbage Collection
     }
@@ -98,6 +98,12 @@ public class DLL {
             return ;
         }
         if(head.data == val){
+            head = head.next;
+
+            if(head != null){
+                head.prev = null;
+            }
+
             System.out.println("Element " + val + "deleted at head");
             return ;
         }
@@ -113,7 +119,7 @@ public class DLL {
         }
         System.out.println("Element " + val + " deleted at index: " + index);
         Node toDelete = pointer.next;
-        pointer.next = pointer.next.next;
+        pointer.next.prev  = pointer.next;
         toDelete = null;
     }
 }
@@ -132,5 +138,7 @@ class Driver{
 //        sll.insertAtPos(6,12); // Invalid Position
         dll.insertAtPos(5,12);
         dll.printSLL();
+        dll.deleteByValue(20);
+        dll.deleteAtHead();
     }
 }

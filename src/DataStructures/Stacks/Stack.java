@@ -25,26 +25,25 @@ public class Stack { //LIFO or FILO
     }
 
     // Pop: Remove the top element
-    int pop() {
+    void pop() {
         if (top == -1) {
             System.out.println("Stack Underflow");
-            return -1;
+            return ;
         }
 
         int value = arr[top];
+        System.out.println(value + " Popped");
         top--;
-
-        return value;
     }
 
     // Peek: Return the top element
-    int peek() {
+    void peek() {
         if (top == -1) {
-            System.out.println("Stack is empty");
-            return -1;
+            System.out.println("Stack UnderFlow");
+            return ;
         }
 
-        return arr[top];
+        for (int i: arr) System.out.println(i + " ");
     }
 
     // Check whether stack is empty
@@ -55,7 +54,7 @@ public class Stack { //LIFO or FILO
     // Display the stack
     void display() {
         if (top == -1) {
-            System.out.println("Stack is empty");
+            System.out.println("Stack UnderFlow");
             return;
         }
 
