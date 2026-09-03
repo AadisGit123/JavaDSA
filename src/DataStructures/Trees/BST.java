@@ -15,10 +15,10 @@ class Node {
 public class BST {
     Node root;
     BST(){
-        root = null;
+        this.root = null;
     }
 
-    void DFS(Node root){ // PreOrder
+    void DFS(Node root){ // InOrder: returns element in a sorted order.
         if (root == null){
             return;
         }
@@ -82,15 +82,29 @@ public class BST {
             root.left = removeRec(root.left, key);
         } else if (key > root.data) {
             root.right = removeRec(root.right, key);
-        } else { // Element found
-            if(root.left == null && root.right == null){
-                root = null;
-            }
-            else if (root.left)
+        } else {
+            // Element to be deleted is found
+            // Case 1: Node with 0 or 1 child
+                if (root.left == null) {
+                    return root.right;
+                } else if (root.right == null) {
+                    return root.left;
+                }
+                // Case 2: Node with 2 children
+            Node successor = findSuccessor(root.right);
+            root.data = successor.data;
+            root.right = removeRec(root.right, successor.data);
         }
+        return root;
     }
 
-    void remove (int key) {
+    private Node findSuccessor(Node node) {
+        while(node.left != null) {
+            node = node.left;
+        }
+        return node;
+    }
+    void remove(int key) {
         root = removeRec(root, key);
     }
 }
@@ -103,9 +117,23 @@ class DriverCode{
         bst.insert(180);
         bst.insert(30);
         bst.insert(70);
-        bst.insert(60);
-
-
+        bst.insert(110);
+        bst.insert(130);
+        bst.insert(120);
+        bst.insert(180);
+        bst.insert(55);
+        bst.DFS(bst.root);
+        System.out.println();
+        bst.remove(100);
+        bst.DFS(bst.root);
+        System.out.println();
+        bst.remove(55);
+        bst.DFS(bst.root);
+        System.out.println();
+        bst.remove(110);
+        bst.DFS(bst.root);
+        System.out.println();
+        bst.remove(180);
         bst.DFS(bst.root);
 
 //        System.out.println("\n" + bst.search(70));
