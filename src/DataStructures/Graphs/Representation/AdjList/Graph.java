@@ -22,6 +22,16 @@ public class Graph {
 
     void printAdjList(){
         for (int vertex: adjList.keySet()) System.out.println(vertex + "-> " + adjList.get(vertex));
+        //Another way of printing it
+        /*
+        for (int vertex: adjList.keySet()){
+            System.out.print(vertex + "-> ");
+            for(int neighbor: adjList.get(vertex)){
+                System.out.print(" " + neighbour);
+            }
+            System.out.println();
+        }
+         */
     }
 }
 
